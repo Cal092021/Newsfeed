@@ -1,61 +1,39 @@
 import React from 'react';
 import './App.css';
 import ReactDom from 'react-dom';
-import {useEffect, UseState} from 'react';
+import {useEffect, useState} from 'react';
+import {Newsfeed} from "./components/Newsfeed";
+import {SignUp} from "./components/login";
 
 function App(props) {
 
-  const photos = props.photos;
-  const listItems = photos.map((photo) => <li>{photo}</li>
-  );
+  const [page, setPage] = useState("signUp");
+  const [user, setUser] = useState(false);
+
+  let returnedPage = undefined;
 
 
   return (
+
     <div className="App">
-      <h1>Newsfeed</h1>
-      {photos.map((image) => <img key={image.src} src={image.src} />)}
-      <div className="id"></div>
-      <p>
-      </p>
-    </div>
-  );
+
+    <SignUp/>
+
+    if (!user.hasOwnProperty("username")) {
+      returnedPage === <Newsfeed setPage={setPage} />
 }
-
-const photos = 
-[{src:"https://picsum.photos/id/237/200/300"},
-{src:"https://picsum.photos/id/408/200/300"},
-{src:"https://picsum.photos/id/935/200/300"},
-{src:"https://picsum.photos/id/607/200/300"},
-{src:"https://picsum.photos/id/208/200/300"},
-{src:"https://picsum.photos/id/237/200/300"},
-{src:"https://picsum.photos/id/408/200/300"},
-{src:"https://picsum.photos/id/935/200/300"},
-{src:"https://picsum.photos/id/607/200/300"},
-{src:"https://picsum.photos/id/208/200/300"},
-{src:"https://picsum.photos/id/237/200/300"},
-{src:"https://picsum.photos/id/408/200/300"},
-{src:"https://picsum.photos/id/935/200/300"},
-{src:"https://picsum.photos/id/607/200/300"},
-{src:"https://picsum.photos/id/208/200/300"},
-{src:"https://picsum.photos/id/237/200/300"},
-{src:"https://picsum.photos/id/408/200/300"},
-{src:"https://picsum.photos/id/935/200/300"},
-{src:"https://picsum.photos/id/607/200/300"},
-{src:"https://picsum.photos/id/208/200/300"},
-{src:"https://picsum.photos/id/237/200/300"},
-{src:"https://picsum.photos/id/408/200/300"},
-{src:"https://picsum.photos/id/935/200/300"},
-{src:"https://picsum.photos/id/607/200/300"},
-{src:"https://picsum.photos/id/208/200/300"},
-{src:"https://picsum.photos/id/237/200/300"},
-{src:"https://picsum.photos/id/408/200/300"},
-{src:"https://picsum.photos/id/935/200/300"},
-{src:"https://picsum.photos/id/607/200/300"},
-{src:"https://picsum.photos/id/208/200/300"},
-{src:"https://picsum.photos/id/505/200/300"}
-];
-
-
+    else if (page === "Newsfeed") {
+      returnedPage = 
+        <Newsfeed setPage={setPage}  />
+      
+    
+  
+    
+}
+</div>
+  )}
+  
+  
 ReactDom.render(
   <App photos={photos}/>,
   document.getElementById('root')
